@@ -92,8 +92,8 @@ export default function NotesList() {
 
   return (
     <div className="space-y-8">
-      <div className="text-center">
-        <h2 className="text-3xl font-bold text-white inline-block">📝 Recent Notes</h2>
+      <div className="flex justify-center">
+        <span className="text-3xl font-bold text-white select-none">📝 Recent Notes</span>
       </div>
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {notes.map((note) => (
