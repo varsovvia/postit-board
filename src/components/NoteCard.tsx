@@ -7,15 +7,42 @@ interface NoteCardProps {
 }
 
 export default function NoteCard({ note }: NoteCardProps) {
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    })
+  // Debug: Log the note data to see what we're working with
+  console.log('Note data:', note)
+  console.log('Created at:', note.created_at, 'Type:', typeof note.created_at)
+  
+  const formatDate = (dateString: string | null | undefined) => {
+    if (!dateString) {
+      return 'No date'
+    }
+    
+    try {
+      const date = new Date(dateString)
+      
+      // Check if the date is valid
+      if (isNaN(date.getTime())) {
+        console.warn('Invalid date string:', dateString)
+        return 'Invalid date'
+      }
+      
+      // Format the date with more explicit options
+      const formattedDate = date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      })
+      
+      const formattedTime = date.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+      })
+      
+      return `${formattedDate}, ${formattedTime}`
+    } catch (error) {
+      console.error('Error formatting date:', error, 'Date string:', dateString)
+      return 'Date error'
+    }
   }
 
   return (
