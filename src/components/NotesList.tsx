@@ -54,8 +54,11 @@ export default function NotesList() {
 
   if (loading) {
     return (
-      <div className="flex justify-center py-12">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-white/50"></div>
+      <div className="text-center py-12">
+        <div className="inline-flex items-center px-6 py-4 font-semibold leading-6 text-white shadow-lg rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white mr-4"></div>
+          <span className="text-lg">Loading your notes...</span>
+        </div>
       </div>
     )
   }
@@ -63,8 +66,11 @@ export default function NotesList() {
   if (error) {
     return (
       <div className="text-center py-8">
-        <div className="text-red-200 text-sm bg-red-500/20 p-6 rounded-3xl max-w-md mx-auto border border-red-400/30 backdrop-blur-sm">
-          Error loading notes: {error}
+        <div className="text-red-200 text-sm bg-red-500/20 p-6 rounded-3xl max-w-md mx-auto border border-red-400/30 backdrop-blur-sm animate-pulse">
+          <div className="flex items-center justify-center">
+            <span className="mr-2">⚠️</span>
+            Error loading notes: {error}
+          </div>
         </div>
       </div>
     )
@@ -73,8 +79,12 @@ export default function NotesList() {
   if (notes.length === 0) {
     return (
       <div className="text-center py-12">
-        <div className="text-white/80 text-xl bg-white/10 p-8 rounded-3xl backdrop-blur-sm border border-white/20">
-          ✨ No notes yet. Be the first to share something!
+        <div className="text-white/80 text-xl bg-gradient-to-br from-white/15 to-white/5 p-8 rounded-3xl backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300">
+          <div className="w-20 h-20 bg-gradient-to-r from-teal-400/20 to-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span className="text-4xl">✨</span>
+          </div>
+          <p className="mb-2">No notes yet.</p>
+          <p className="text-lg">Be the first to share something amazing! 🚀</p>
         </div>
       </div>
     )

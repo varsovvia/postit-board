@@ -19,19 +19,32 @@ export default function NoteCard({ note }: NoteCardProps) {
   }
 
   return (
-    <div className="bg-white/10 backdrop-blur-md rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border border-white/20 hover:border-white/40">
-      <div className="mb-6">
-        <p className="text-white text-lg leading-relaxed font-medium">{note.content}</p>
+    <div className="group bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-white/20 hover:border-white/40 relative overflow-hidden">
+      {/* Shimmer effect on hover */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+      
+      {/* Content */}
+      <div className="relative z-10">
+        <div className="mb-6">
+          <p className="text-white text-lg leading-relaxed font-medium group-hover:text-white/90 transition-colors duration-300">
+            {note.content}
+          </p>
+        </div>
+        
+        <div className="flex flex-col sm:flex-row gap-3 text-sm">
+          <span className="font-semibold text-yellow-300 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 px-4 py-2 rounded-full backdrop-blur-sm border border-yellow-400/30 hover:border-yellow-400/50 transition-all duration-300 flex items-center self-start">
+            <span className="w-2 h-2 bg-yellow-400 rounded-full mr-2 animate-pulse"></span>
+            {note.user_email || 'Anonymous'}
+          </span>
+          <span className="text-white/70 bg-gradient-to-r from-white/10 to-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300 flex items-center self-start">
+            <span className="mr-2">🕒</span>
+            {formatDate(note.created_at)}
+          </span>
+        </div>
       </div>
       
-      <div className="flex items-center justify-between text-sm">
-        <span className="font-semibold text-yellow-300 bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm">
-          {note.user_email || 'Anonymous'}
-        </span>
-        <span className="text-white/70 bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm">
-          {formatDate(note.created_at)}
-        </span>
-      </div>
+      {/* Decorative corner accent */}
+      <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-teal-400/20 to-blue-500/20 rounded-bl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
     </div>
   )
 }
