@@ -92,7 +92,9 @@ export default function NotesList() {
 
   return (
     <div className="space-y-8">
-      <h2 className="text-3xl font-bold text-white text-center">📝 Recent Notes</h2>
+      <div className="text-center">
+        <h2 className="text-3xl font-bold text-white inline-block">📝 Recent Notes</h2>
+      </div>
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {notes.map((note) => (
           <NoteCard key={note.id} note={note} />
