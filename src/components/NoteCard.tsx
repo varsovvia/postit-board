@@ -41,7 +41,7 @@ export default function NoteCard({ note }: NoteCardProps) {
   }
 
   return (
-    <div className="group bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-white/20 hover:border-white/40 relative overflow-hidden">
+    <div className="group bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-white/20 hover:border-white/40 relative">
       {/* Shimmer effect on hover */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
       
@@ -53,15 +53,23 @@ export default function NoteCard({ note }: NoteCardProps) {
           </p>
         </div>
         
-        <div className="flex flex-col sm:flex-row gap-3 text-sm">
-          <span className="font-semibold text-yellow-300 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 px-4 py-2 rounded-full backdrop-blur-sm border border-yellow-400/30 hover:border-yellow-400/50 transition-all duration-300 flex items-center self-start">
-            <span className="w-2 h-2 bg-yellow-400 rounded-full mr-2 animate-pulse"></span>
-            {note.user_email || 'Anonymous'}
-          </span>
-          <span className="text-white/70 bg-gradient-to-r from-white/10 to-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300 flex items-center self-start">
-            <span className="mr-2">🕒</span>
-            {formatDate(note.created_at)}
-          </span>
+        {/* Email and Date in separate rows to ensure proper spacing */}
+        <div className="space-y-3">
+          {/* Email */}
+          <div className="flex justify-start">
+            <span className="font-semibold text-yellow-300 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 px-4 py-2 rounded-full backdrop-blur-sm border border-yellow-400/30 hover:border-yellow-400/50 transition-all duration-300 flex items-center">
+              <span className="w-2 h-2 bg-yellow-400 rounded-full mr-2 animate-pulse"></span>
+              {note.user_email || 'Anonymous'}
+            </span>
+          </div>
+          
+          {/* Date - Always on its own line with full width */}
+          <div className="flex justify-start">
+            <span className="text-white/70 bg-gradient-to-r from-white/10 to-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300 flex items-center min-w-0">
+              <span className="mr-2 flex-shrink-0">🕒</span>
+              <span className="truncate">{formatDate(note.created_at)}</span>
+            </span>
+          </div>
         </div>
       </div>
       
