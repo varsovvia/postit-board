@@ -41,10 +41,7 @@ export default function NoteCard({ note }: NoteCardProps) {
   }
 
   return (
-    <div className="group bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] border border-white/20 hover:border-white/40 relative">
-      {/* Subtle shimmer effect on hover */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 opacity-0 group-hover:opacity-100"></div>
-      
+    <div className="group bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300 border border-white/20 hover:border-white/40 relative">
       {/* Content */}
       <div className="relative z-10">
         <div className="mb-6">
