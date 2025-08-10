@@ -55,7 +55,7 @@ export default function CreateNote() {
         <div>
           <label htmlFor="content" className="block text-sm font-medium text-white/90 mb-3 flex items-center">
             <span className="mr-2">💭</span>
-            What's on your mind?
+            What&apos;s on your mind?
           </label>
           <textarea
             id="content"
